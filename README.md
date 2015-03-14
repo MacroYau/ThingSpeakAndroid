@@ -1,5 +1,7 @@
 # ThingSpeakAndroid
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ThingSpeakAndroid-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1645)
+
 Unofficial [ThingSpeak](https://thingspeak.com) API library for Android.
 
 ## Features
