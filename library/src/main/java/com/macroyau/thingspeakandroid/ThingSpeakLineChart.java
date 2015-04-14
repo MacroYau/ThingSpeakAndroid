@@ -66,7 +66,7 @@ public class ThingSpeakLineChart implements ThingSpeakChannel.ChannelFieldFeedUp
      * Constructor for public Channels.
      *
      * @param channelId The ID of this specific Channel.
-     * @param fieldId The ID of a specific field in the Channel.
+     * @param fieldId The ID of the specific field in the Channel.
      */
     public ThingSpeakLineChart(long channelId, int fieldId) {
         this(channelId, fieldId, null);
@@ -81,6 +81,17 @@ public class ThingSpeakLineChart implements ThingSpeakChannel.ChannelFieldFeedUp
      */
     public ThingSpeakLineChart(long channelId, int fieldId, String readApiKey) {
         this.mChannel = new ThingSpeakChannel(channelId, readApiKey);
+        this.mFieldId = fieldId;
+    }
+
+    /***
+     * Constructor for an existing {@link com.macroyau.thingspeakandroid.ThingSpeakChannel}.
+     *
+     * @param channel The existing {@link com.macroyau.thingspeakandroid.ThingSpeakChannel}.
+     * @param fieldId The ID of the specific field in the Channel.
+     */
+    public ThingSpeakLineChart(ThingSpeakChannel channel, int fieldId) {
+        this.mChannel = channel;
         this.mFieldId = fieldId;
     }
 
