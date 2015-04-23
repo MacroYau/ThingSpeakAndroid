@@ -7,6 +7,7 @@ Unofficial [ThingSpeak](https://thingspeak.com) API library for Android.
 ## Features
 
 * Convenient access to [ThingSpeak API](http://community.thingspeak.com/documentation/api/)
+* Support for [TalkBack API](https://thingspeak.com/docs/talkback)
 * Asynchronous data fetching using [Retrofit](http://square.github.io/retrofit/)
 * Customizable charting based on [HelloCharts for Android](https://github.com/lecho/hellocharts-android)
 
@@ -16,7 +17,7 @@ ThingSpeakAndroid is available on the jCenter repository. If you are using Andro
 
 ```Gradle
 dependencies {
-    compile 'com.macroyau:thingspeakandroid:0.1.0'
+    compile 'com.macroyau:thingspeakandroid:0.2.0'
 }
 ```
 
@@ -57,7 +58,7 @@ tsChart.setListener(new ThingSpeakLineChart.ChartDataUpdateListener() {
 tsChart.loadChartData();
 ```
 
-Please read the API documentation and sample app [source code](https://github.com/MacroYau/ThingSpeakAndroid/blob/master/app/src/main/java/com/macroyau/thingspeakandroid/demo/DemoActivity.java) for further details.
+Please read the API documentation and sample app [source code](https://github.com/MacroYau/ThingSpeakAndroid/blob/master/app/src/main/java/com/macroyau/thingspeakandroid/demo/DemoActivity.java) for further details. Sample for TalkBack is coming soon.
 
 ## License
 
