@@ -21,6 +21,16 @@ dependencies {
 }
 ```
 
+Please add the following lines to the `build.gradle` file if Android Studio fails to resolve the jCenter repository.
+
+```Gradle
+repositories {
+    maven {
+        url "http://dl.bintray.com/macroyau/maven"
+    }
+}
+```
+
 ## Usage
 
 Using ThingSpeakAndroid is extremely easy. Create a `ThingSpeakChannel`, set an event listener and load the data!
