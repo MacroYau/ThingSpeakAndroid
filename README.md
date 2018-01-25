@@ -17,7 +17,7 @@ ThingSpeakAndroid is available on the jCenter repository. If you are using Andro
 
 ```Gradle
 dependencies {
-    compile 'com.macroyau:thingspeakandroid:0.2.1'
+    compile 'com.macroyau:thingspeakandroid:0.2.2'
 }
 ```
 
@@ -73,7 +73,7 @@ Please read the API documentation and sample app [source code](https://github.co
 ## License
 
 ```
-Copyright 2017 Macro Yau
+Copyright 2018 Macro Yau
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
