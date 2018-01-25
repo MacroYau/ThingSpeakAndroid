@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
@@ -111,17 +112,22 @@ public class ThingSpeakLineChart implements ThingSpeakChannel.ChannelFieldFeedUp
         mTitle = channelFieldFeed.getChannel().getFieldName(mFieldId);
 
         // Initialize line chart
-        List<Line> lines = new ArrayList<Line>();
-        List<PointValue> values = new ArrayList<PointValue>();
-        List<AxisValue> dateAxisValues = new ArrayList<AxisValue>();
-        List<AxisValue> valueAxisValues = new ArrayList<AxisValue>();
-        final DateFormat df = new SimpleDateFormat(mDateAxisLabelFormat);
+        List<Line> lines = new ArrayList<>();
+        List<PointValue> values = new ArrayList<>();
+        List<AxisValue> dateAxisValues = new ArrayList<>();
+        List<AxisValue> valueAxisValues = new ArrayList<>();
+        final DateFormat df = new SimpleDateFormat(mDateAxisLabelFormat, Locale.US);
         List<Feed> feeds = channelFieldFeed.getFeeds();
         long reference = feeds.get(0).getCreatedAt().getTime();
         long index = 0;
         long startDateIndex = -1, endDateIndex = -1;
         long prevDate = -1;
-        float minValue = Float.parseFloat(feeds.get(0).getField(mFieldId));
+        float minValue;
+        try {
+            minValue = Float.parseFloat(feeds.get(0).getField(mFieldId));
+        } catch (Exception e) {
+            minValue = 0;
+        }
         float maxValue = -1;
 
         // Inflate line chart
@@ -137,7 +143,12 @@ public class ThingSpeakLineChart implements ThingSpeakChannel.ChannelFieldFeedUp
                 endDateIndex = index;
 
             // Insert data points
-            float value = Float.parseFloat(f.getField(mFieldId));
+            float value;
+            try {
+                value = Float.parseFloat(f.getField(mFieldId));
+            } catch (Exception e) {
+                continue;
+            }
             values.add(new PointValue(index, value));
 
             // Configure date labels
@@ -161,7 +172,6 @@ public class ThingSpeakLineChart implements ThingSpeakChannel.ChannelFieldFeedUp
         float axisMaxValue = maxValue - (maxValue % mValueAxisLabelInterval) + mValueAxisLabelInterval;
         float axisValue = axisMinValue;
         while (axisValue <= axisMaxValue) {
-            System.out.println(axisValue);
             valueAxisValues.add(new AxisValue(axisValue));
             axisValue += mValueAxisLabelInterval;
         }
