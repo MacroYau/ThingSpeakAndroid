@@ -2,7 +2,7 @@ package com.macroyau.thingspeakandroid.demo;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.macroyau.thingspeakandroid.ThingSpeakChannel;
@@ -16,7 +16,7 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
-public class DemoActivity extends ActionBarActivity {
+public class DemoActivity extends AppCompatActivity {
 
     private ThingSpeakChannel tsChannel;
     private ThingSpeakLineChart tsChart;
@@ -49,7 +49,7 @@ public class DemoActivity extends ActionBarActivity {
         calendar.add(Calendar.MINUTE, -5);
 
         // Configure LineChartView
-        chartView = (LineChartView) findViewById(R.id.chart);
+        chartView = findViewById(R.id.chart);
         chartView.setZoomEnabled(false);
         chartView.setValueSelectionEnabled(true);
 
