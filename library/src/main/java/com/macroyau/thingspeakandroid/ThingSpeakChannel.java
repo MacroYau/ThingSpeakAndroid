@@ -89,7 +89,7 @@ public class ThingSpeakChannel {
 
     }
 
-    private static final String THINGSPEAK_API = "https://api.thingspeak.com";
+    private static String THINGSPEAK_API = "https://api.thingspeak.com";
     private static final String REQUEST_PARAMS_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     private ChannelFeedUpdateListener mChannelFeedUpdateListener;
@@ -113,7 +113,27 @@ public class ThingSpeakChannel {
      * @param channelId The ID of this specific Channel.
      */
     public ThingSpeakChannel(long channelId) {
-        this(channelId, null);
+        this(channelId, null, null);
+    }
+
+    /***
+     * Constructor for public Channels.
+     *
+     * @param channelId The ID of this specific Channel.
+     * @param API The address of the custom thingspeak server API.
+     */
+    public ThingSpeakChannel(long channelId, URL API) {
+        this(channelId, null, API);
+    }
+
+    /***
+     * Constructor for public Channels.
+     *
+     * @param channelId The ID of this specific Channel.
+     * @param readApiKey The Read API Key for this specific Channel.
+     */
+    public ThingSpeakChannel(long channelId, String readApiKey) {
+        this(channelId, readApiKey, null);
     }
 
     /***
@@ -121,8 +141,10 @@ public class ThingSpeakChannel {
      *
      * @param channelId The ID of this specific Channel.
      * @param readApiKey The Read API Key for this specific Channel.
+     * @param API The address of the custom thingspeak server API.
      */
-    public ThingSpeakChannel(long channelId, String readApiKey) {
+    public ThingSpeakChannel(long channelId, String readApiKey, @Nullable URL API) {
+        THINGSPEAK_API = API.toString();
         this.mChannelId = channelId;
         this.mReadApiKey = readApiKey;
 
